@@ -1,5 +1,10 @@
 import pybullet as p
+import pybullet_data
 physicsclient =p.connect(p.GUI)
+p.setAdditionalSearchPath(pybullet_data.getDataPath())
+p.setGravity(0,0,-9.8)
+planeId = p.loadURDF("plane.urdf")
+
 p.loadSDF("box.sdf")
 import time
 for i in range(1000) :
