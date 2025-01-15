@@ -1,9 +1,12 @@
 import pyrosim.pyrosim as pyrosim
-pyrosim.Start_SDF("box.sdf")
-for i in range(5):
-    for j in range(5):
-        for k in range(10) :
-            sizefactor = [0.8**k, 0.8**k, 0.8**k]
-            pyrosim.Send_Cube(pos=[i-2.5, j-2.5, k+0.5], size=sizefactor)
-pyrosim.End()
 
+def create_robot():
+    pyrosim.Start_URDF("body.urdf")
+
+    pyrosim.Send_Cube(name="Torso",pos=[0, 0, 0.5],size=[1, 1, 1])
+    pyrosim.Send_Joint(name="Torso_R_Leg",parent="Torso", child="R_Leg",type="revolute",position=[0.5, 0, 1.5])
+    pyrosim.Send_Cube(name="R_Leg",pos=[0.5, 0, 0],size=[1, 1, 1])
+    pyrosim.Send_Joint(name="Torso_L_Leg",parent="Torso",child="L_Leg",type="revolute",position=[-0.5, 0, 1.5])
+    pyrosim.Send_Cube(name="L_Leg",pos=[-0.5, 0, 0],size=[1, 1, 1])
+    pyrosim.End()
+create_robot()
