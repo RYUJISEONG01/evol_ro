@@ -21,8 +21,8 @@ for i in range(500) :
     time.sleep(1/60)
 
 p.disconnect()
-data_directory="data"
-os.makedirs(data_directory, exist_ok=True)
-output_filename = os.path.join(data_directory, "LlegSV.npy")
-numpy.save(output_filename,LlegSV)
+data_directory="data" # 책장을 만드는 것에 비유, 책장을 만들 공간은 data_directory이며, 거기의 이름은 data라고 명명
+os.makedirs(data_directory, exist_ok=True) #책장을 만드는 작업,책장이 이미 있으면 사용, 없으면 만들기
+output_filename = os.path.join(data_directory, "LlegSV.npy") #책을 책장에 넣을 정확한 위치를 정하는 것
+numpy.save(output_filename,LlegSV) # 책을 저장 위치에 넣는 작업
 print(f"sensor values saved to {output_filename}")
